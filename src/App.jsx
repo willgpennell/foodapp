@@ -1,5 +1,6 @@
 import Search from "./Search";
 import { useState } from "react";
+import FoodList from "./FoodList";
 
 function App() {
   // spoonacular's data is an array, so useState needs to default to array
@@ -8,9 +9,7 @@ function App() {
   return (
     <>
       <Search foodData={foodData} setFoodData={setFoodData} />
-      {foodData.map((food) => (
-        <h1>{food.title}</h1>
-      ))}
+      <FoodList foodData={foodData} />
     </>
   );
 }
