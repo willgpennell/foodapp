@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 
 export default function Search() {
   const [query, setQuery] = useState("Pizza");
-  useEffect(() => {}, []);
+  useEffect(() => {
+    function demo() {
+      console.log("Demo Function executed!!!");
+    }
+    demo();
+  }, [query]);
   return (
     <>
       <input
