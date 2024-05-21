@@ -1,6 +1,7 @@
 import Search from "./components/Search";
 import { useState } from "react";
 import FoodList from "./components/FoodList";
+import Header from "./components/Header";
 
 function App() {
   // spoonacular's data is an array, so useState needs to default to array
@@ -8,6 +9,7 @@ function App() {
   const [foodData, setFoodData] = useState([]);
   return (
     <>
+      <Header />
       <Search foodData={foodData} setFoodData={setFoodData} />
       <FoodList foodData={foodData} />
     </>
