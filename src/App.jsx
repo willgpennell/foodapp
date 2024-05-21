@@ -1,6 +1,6 @@
-import Search from "./Search";
+import Search from "./components/Search";
 import { useState } from "react";
-import FoodList from "./FoodList";
+import FoodList from "./components/FoodList";
 
 function App() {
   // spoonacular's data is an array, so useState needs to default to array
