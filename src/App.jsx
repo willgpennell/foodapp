@@ -8,6 +8,9 @@ function App() {
   return (
     <>
       <Search foodData={foodData} setFoodData={setFoodData} />
+      {foodData.map((food) => (
+        <h1>{food.title}</h1>
+      ))}
     </>
   );
 }
