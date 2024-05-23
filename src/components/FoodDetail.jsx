@@ -14,8 +14,25 @@ export default function FoodDetail({ foodId }) {
   }, [foodId]);
   return (
     <div>
-      {food.title}
-      <img src={food.image}></img>
+      <div>
+        <h1>{food.title}</h1>
+        <img src={food.image}></img>
+      </div>
+      <span>
+        <strong>⏰ {food.readyInMinutes} Minutes</strong>
+      </span>
+      <span>
+        <strong>🧑‍🧑‍🧒‍🧒 {food.servings} Servings</strong>
+      </span>
+      <span>{food.vegetarian ? "🥕 Vegetarian" : "🍔 Non-Vegetarian"}</span>
+      <span>{food.vegan ? "🥦 Vegan" : "🍟 Non-Vegan"}</span>
+      <div>
+        <span>$ {food.pricePerServing}</span>
+      </div>
+      <div>
+        <h2>Instructions</h2>
+        {food.analyzedInstructions}
+      </div>
     </div>
   );
 }
