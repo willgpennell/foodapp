@@ -1,16 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 export default function FoodDetail({ foodId }) {
+  const [food, setFood] = useState({});
   const URL = `https://api.spoonacular.com/recipes/${foodId}/information`;
   const API_KEY = import.meta.env.VITE_API_KEY;
   useEffect(() => {
     async function fetchFood() {
-      //const res = await fetch(`${URL}?apiKey=${API_KEY}`);
-      //const data = await res.json();
-      console.log(`${URL}?apiKey=${API_KEY}`);
-      console.log(foodId);
-      //console.log(data);
+      const res = await fetch(`${URL}?apiKey=${API_KEY}`);
+      const data = await res.json();
+      console.log(data);
+      setFood(data);
     }
     fetchFood();
-  }, []);
-  return <div>{foodId}</div>;
+  }, [foodId]);
+  return (
+    <div>
+      {food.title}
+      <img src={food.image}></img>
+    </div>
+  );
 }
