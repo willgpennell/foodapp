@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-export default function FoodDetail({ foodId }) {
+export default function FoodDetail({ foodId, isLoading, setLoading }) {
   const [food, setFood] = useState({});
+
   const URL = `https://api.spoonacular.com/recipes/${foodId}/information`;
   const API_KEY = import.meta.env.VITE_API_KEY;
   useEffect(() => {
@@ -9,9 +10,10 @@ export default function FoodDetail({ foodId }) {
       const data = await res.json();
       console.log(data);
       setFood(data);
+      setLoading(false);
     }
     fetchFood();
-  }, [foodId]);
+  }, [foodId, API_KEY, URL, setLoading]);
   return (
     <div>
       <div>
@@ -31,7 +33,13 @@ export default function FoodDetail({ foodId }) {
       </div>
       <div>
         <h2>Instructions</h2>
-        {food.analyzedInstructions}
+        {isLoading ? (
+          <p> Loading... </p>
+        ) : (
+          food.analyzedInstructions[0].steps.map((step) => (
+            <li key={step.number}>{step.step}</li>
+          ))
+        )}
       </div>
     </div>
   );

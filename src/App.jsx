@@ -12,16 +12,25 @@ function App() {
   // foodData should be global so all components can access it, not just Search.jsx
   const [foodData, setFoodData] = useState([]);
   const [foodId, setFoodId] = useState("656329");
+  const [isLoading, setLoading] = useState(true);
   return (
     <div className="App">
       <Header />
       <Search foodData={foodData} setFoodData={setFoodData} />
       <Container>
         <InnerContainer>
-          <FoodList foodData={foodData} setFoodId={setFoodId} />
+          <FoodList
+            foodData={foodData}
+            setFoodId={setFoodId}
+            setLoading={setLoading}
+          />
         </InnerContainer>
         <InnerContainer>
-          <FoodDetail foodId={foodId} />
+          <FoodDetail
+            foodId={foodId}
+            isLoading={isLoading}
+            setLoading={setLoading}
+          />
         </InnerContainer>
       </Container>
     </div>
