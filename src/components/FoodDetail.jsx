@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./FoodDetail.module.css";
 export default function FoodDetail({ foodId, isLoading, setLoading }) {
   const [food, setFood] = useState({});
 
@@ -15,7 +16,7 @@ export default function FoodDetail({ foodId, isLoading, setLoading }) {
     fetchFood();
   }, [foodId, API_KEY, URL, setLoading]);
   return (
-    <div>
+    <div className={styles.details}>
       <div>
         <h1>{food.title}</h1>
         <img src={food.image}></img>
